@@ -1,0 +1,121 @@
+:root {
+  /* Font Colors */
+  --white: #fff;
+  --light-mid-grey: #a5a5a5;
+  --dark-mid-grey: #9ca3af;
+  --dark-grey: #787878;
+  --very-dark-grey: #2e2e2f;
+}
+
+/* Josh Comeau CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+}
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button {
+  font: inherit;
+}
+
+/* Typography */
+body {
+  font-family: "Inter", sans-serif;
+}
+header > h1 {
+  font-weight: 800;
+  font-size: 2.675rem;
+  color: var(--white);
+}
+button.watchlist-btn {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+.intro-text {
+  font-size: 1.125rem;
+  color: var(--very-dark-grey);
+}
+.search-btn {
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: var(--white);
+  line-height: 20px;
+}
+/* Layout & Related Styling */
+html {
+  height: 100%;
+}
+body {
+  background-color: #1c1c1c;
+}
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  object-fit: cover;
+  background-image: url("/images/office-movie-posters-img.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: inset 0 0 0 1000px rgba(15, 10, 10, 0.7);
+  height: 200px;
+  text-align: center;
+}
+.film-icon {
+  width: 70px;
+}
+main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.intro-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  align-self: center;
+}
+/* Input, buttons, etc.. */
+.watchlist-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 1em;
+}
+.search-form {
+  position: absolute;
+  top: -1.125em;
+  display: flex;
+  width: 85%;
+}
+.search-field {
+  background-color: var(--very-dark-grey);
+  border: none;
+  padding: 0.563em 0.813em;
+  border-radius: 6px 0 0 6px;
+  width: 100%;
+}
+.search-btn {
+  background-color: #4b4b4b;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  padding: 0.563em 0.688em 0.563em 1.063em;
+  cursor: pointer;
+  width: 120px;
+}
