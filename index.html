@@ -18,14 +18,19 @@
     <div class="site-container">
       <header>
         <h1>Find Your Film</h1>
-        <button class="watchlist-btn">Watchlist</button>
-      </header>
-      <main>
-        <form class="search-form">
-          <input type="search" class="search-field" />
+        <button class="watchlist-btn">My Watchlist</button>
+        <form id="form-el" class="search-form">
+          <input
+            type="search"
+            name="search-field"
+            class="search-field"
+            id="search-field"
+          />
           <button class="search-btn">Search</button>
         </form>
-        <div class="intro-prompt">
+      </header>
+      <main id="main-holder" class="vertical-height">
+        <div class="intro-prompt" id="intro-prompt">
           <img
             class="film-icon"
             src="./images/film-icon.svg"
@@ -33,6 +38,7 @@
           />
           <h2 class="intro-text">Start Exploring</h2>
         </div>
+        <div id="movies-holder"></div>
       </main>
     </div>
   </body>
