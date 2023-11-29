@@ -30,16 +30,39 @@ formEl.addEventListener("submit", (e) => {
             console.log(imdbMovieData);
             movieDescription += `
             <div class="movie-card-holder">
-              <img src="${imdbMovieData.Poster}" class="movie-poster">
+              <img src="${
+                imdbMovieData.Poster === "N/A"
+                  ? "/images/movie-jacket-sub.png"
+                  : imdbMovieData.Poster
+              }" class="movie-poster">
               <div class="movie-content-holder">
                 <div class="movie-and-rating-holder">
                   <h2 class="movie-title">${imdbMovieData.Title}
-                  <span class="movie-rating"><span class="star-emoji">⭐️</span>${imdbMovieData.imdbRating}</span></h2>
+                  <span class="movie-rating"><span class="star-emoji">⭐️</span>${
+                    imdbMovieData.imdbRating === "N/A"
+                      ? "no rating"
+                      : imdbMovieData.imdbRating
+                  }</span></h2>
                 </div>
                 <div class="time-and-genre-holder">
-                  <p class="movie-time">${imdbMovieData.Runtime}</p>
-                  <p class="movie-genre">${imdbMovieData.Genre}</p>
-                  <button class="add-to-watchlist-btn">Watchlist</button>
+                  <div class="time-and-genre-container">
+                    <p class="movie-time">${
+                      imdbMovieData.Runtime === "N/A"
+                        ? ""
+                        : imdbMovieData.Runtime
+                    }</p>
+                    <p class="movie-genre">${
+                      imdbMovieData.Genre === "N/A" ? "" : imdbMovieData.Genre
+                    }</p>
+                  </div>
+                  <div>
+                    <button class="add-to-watchlist-btn">Watchlist</button>
+                  </div>
+                </div>
+                <div class="plot-holder">
+                  <p>${
+                    imdbMovieData.Plot === "N/A" ? "" : imdbMovieData.Plot
+                  }</p>
                 </div>
               </div>
             </div>

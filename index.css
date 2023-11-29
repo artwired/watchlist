@@ -66,20 +66,22 @@ input {
   font-weight: 500;
   color: var(--white);
 }
-.movie-rating {
-  font-size: 0.75rem;
-  color: var(--white);
-  white-space: nowrap;
-}
+.movie-rating,
 .movie-time {
   color: var(--white);
   font-size: 0.75rem;
+  white-space: nowrap;
 }
 .movie-genre {
   color: var(--white);
   font-size: 0.75rem;
 }
-
+.plot-holder > p {
+  font-size: 0.875rem;
+  color: var(--light-mid-grey);
+  font-weight: 400;
+  line-height: 20px;
+}
 /* Layout & Related Styling */
 .vertical-height {
   height: calc(100vh - 12.5em);
@@ -109,6 +111,7 @@ header {
 .film-icon {
   width: 70px;
   margin-bottom: 0.75em;
+  align-self: center;
 }
 main {
   display: flex;
@@ -146,6 +149,7 @@ main {
 img {
   padding-top: 1.625em;
   display: block;
+  align-self: start;
 }
 .movie-poster {
   width: 6.188em;
@@ -160,7 +164,7 @@ img {
   display: flex;
   align-items: center;
   width: 100%;
-  margin-top: 3em;
+  margin-top: 2em;
 }
 .movie-rating {
   margin-left: 0.5em;
@@ -170,6 +174,18 @@ img {
 }
 .time-and-genre-holder {
   display: flex;
+  margin-top: 0.75em;
+  flex-direction: column;
+}
+.time-and-genre-container {
+  display: flex;
+  flex-direction: row;
+}
+.movie-time {
+  margin-right: 1.125em;
+}
+.plot-holder {
+  margin-top: 0.625em;
 }
 /* Input, buttons, etc.. */
 .watchlist-btn {
@@ -188,8 +204,12 @@ img {
   background-size: 16px;
   padding-left: 1.75em;
   font-size: 0.75rem;
-  margin-left: 1.75em;
   cursor: pointer;
+  margin-top: 1em;
+}
+.add-to-watchlist-btn:hover {
+  color: #ffe209;
+  background-image: url(./images/add-to-watchlist-icon-hvr.svg);
 }
 .search-form {
   position: absolute;
@@ -219,4 +239,21 @@ img {
 }
 input:focus {
   outline: none;
+}
+@media (min-width: 700px) {
+  .time-and-genre-holder {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .time-and-genre-container {
+    margin-top: 0.063em;
+  }
+  .movie-genre {
+    white-space: nowrap;
+    margin-right: 1.75em;
+  }
+  .add-to-watchlist-btn {
+    margin-top: 0;
+  }
 }
