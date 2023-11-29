@@ -62,7 +62,22 @@ input {
   line-height: 20px;
 }
 .movie-title {
+  font-size: 1.125rem;
   font-weight: 500;
+  color: var(--white);
+}
+.movie-rating {
+  font-size: 0.75rem;
+  color: var(--white);
+  white-space: nowrap;
+}
+.movie-time {
+  color: var(--white);
+  font-size: 0.75rem;
+}
+.movie-genre {
+  color: var(--white);
+  font-size: 0.75rem;
 }
 
 /* Layout & Related Styling */
@@ -103,6 +118,7 @@ main {
   background-color: #121212;
   max-width: 550px;
   margin: 0 auto;
+  padding: 0 1.5em;
 }
 .intro-prompt {
   display: flex;
@@ -125,6 +141,7 @@ main {
   display: flex;
   padding-bottom: 1.537em;
   border-bottom: 1px solid #2c2c2c;
+  width: 100%;
 }
 img {
   padding-top: 1.625em;
@@ -132,6 +149,27 @@ img {
 }
 .movie-poster {
   width: 6.188em;
+  margin-right: 1.313em;
+}
+.movie-content-holder {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.movie-and-rating-holder {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 3em;
+}
+.movie-rating {
+  margin-left: 0.5em;
+}
+.star-emoji {
+  margin-right: 0.75em;
+}
+.time-and-genre-holder {
+  display: flex;
 }
 /* Input, buttons, etc.. */
 .watchlist-btn {
@@ -139,6 +177,19 @@ img {
   border: none;
   cursor: pointer;
   margin-top: 1em;
+}
+.add-to-watchlist-btn {
+  background: none;
+  border: none;
+  color: var(--white);
+  background-image: url(./images/add-to-watchlist-icon.svg);
+  background-repeat: no-repeat;
+  background-position: left 0 top 1px;
+  background-size: 16px;
+  padding-left: 1.75em;
+  font-size: 0.75rem;
+  margin-left: 1.75em;
+  cursor: pointer;
 }
 .search-form {
   position: absolute;
