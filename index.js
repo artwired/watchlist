@@ -23,11 +23,11 @@ formEl.addEventListener("submit", (e) => {
     .then(() => {
       for (let imdbMovieId of imdbMovieIdArray) {
         fetch(
-          `http://www.omdbapi.com/?apikey=ef07b548&i=${imdbMovieId}&type=movie`
+          `http://www.omdbapi.com/?apikey=ef07b548&i=${imdbMovieId}&type=movie&plot=full`
         )
           .then((res) => res.json())
           .then((imdbMovieData) => {
-            console.log(imdbMovieData);
+            // console.log(imdbMovieData);
             movieDescription += `
             <div class="movie-card-holder">
               <img src="${
@@ -61,7 +61,9 @@ formEl.addEventListener("submit", (e) => {
                 </div>
                 <div class="plot-holder">
                   <p>${
-                    imdbMovieData.Plot === "N/A" ? "" : imdbMovieData.Plot
+                    imdbMovieData.Plot === "N/A"
+                      ? "<span class='no-description'>No description available.</span>"
+                      : handlePlot(imdbMovieData)
                   }</p>
                 </div>
               </div>
@@ -73,3 +75,19 @@ formEl.addEventListener("submit", (e) => {
     });
   formEl.reset();
 });
+
+function handlePlot(fullString) {
+  let fullPlot = fullString.Plot;
+  const shortPlot =
+    fullPlot.split(/\s+/).slice(0, 22).join(" ") +
+    "...<button class='read-more-btn' data-read-more>Read More</button>";
+
+  if (fullPlot > fullPlot.split(/\s+/).slice(0, 22).join(" ")) {
+    return shortPlot;
+  } else {
+    return fullPlot;
+  }
+}
+// document.addEventListener("click", (e) => {
+
+// });

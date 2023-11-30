@@ -82,6 +82,10 @@ input {
   font-weight: 400;
   line-height: 20px;
 }
+.no-description {
+  font-size: 0.75rem;
+  color: #d6ffdf;
+}
 /* Layout & Related Styling */
 .vertical-height {
   height: calc(100vh - 12.5em);
@@ -239,6 +243,16 @@ img {
 }
 input:focus {
   outline: none;
+}
+.read-more-btn {
+  font-size: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+}
+.read-more-btn:hover {
+  color: #ffe209;
 }
 @media (min-width: 700px) {
   .time-and-genre-holder {
