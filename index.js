@@ -1,6 +1,7 @@
 const formEl = document.getElementById("form-el");
 const moviesHolder = document.getElementById("movies-holder");
 let movieDescription = "";
+
 formEl.addEventListener("submit", (e) => {
   const searchFieldValue = document.getElementById("search-field").value;
   const introPrompt = document.getElementById("intro-prompt");
@@ -62,7 +63,7 @@ formEl.addEventListener("submit", (e) => {
                 <div class="plot-holder">
                   <p>${
                     imdbMovieData.Plot === "N/A"
-                      ? "<span class='no-description'>No description available.</span>"
+                      ? "<span class='no-description'>Plot not available.</span>"
                       : handlePlot(imdbMovieData)
                   }</p>
                 </div>
@@ -77,17 +78,33 @@ formEl.addEventListener("submit", (e) => {
 });
 
 function handlePlot(fullString) {
+  document.addEventListener("click", (e) => {
+    if (e.target.dataset.readMore) {
+      handleReadMore(e.target.dataset.readMore, e);
+    } else if (e.target.dataset.readLess) {
+      handleReadLess(e.target.dataset.readLess, e);
+    }
+  });
   let fullPlot = fullString.Plot;
-  const shortPlot =
+  let shortPlot =
     fullPlot.split(/\s+/).slice(0, 22).join(" ") +
-    "...<button class='read-more-btn' data-read-more>Read More</button>";
+    `...<button class='read-more-btn' data-read-more=${fullString.imdbID}>Read More</button>`;
 
   if (fullPlot > fullPlot.split(/\s+/).slice(0, 22).join(" ")) {
     return shortPlot;
   } else {
     return fullPlot;
   }
+  function handleReadMore(movieID, e) {
+    if (movieID === fullString.imdbID) {
+      e.target.parentNode.innerHTML =
+        fullPlot +
+        `<button class='read-more-btn' data-read-less=${fullString.imdbID}>Read Less</button>`;
+    }
+  }
+  function handleReadLess(movieID, e) {
+    if (movieID === fullString.imdbID) {
+      e.target.parentNode.innerHTML = shortPlot;
+    }
+  }
 }
-// document.addEventListener("click", (e) => {
-
-// });
