@@ -4,6 +4,10 @@ let movieDescription = "";
 
 formEl.addEventListener("submit", (e) => {
   const searchFieldValue = document.getElementById("search-field").value;
+  const searchNotFoundHolder = document.getElementById(
+    "search-not-found-holder"
+  );
+  const searchNotFoundText = document.getElementById("search-not-found-text");
   const introPrompt = document.getElementById("intro-prompt");
   const mainHolder = document.getElementById("main-holder");
   movieDescription = "";
@@ -17,8 +21,21 @@ formEl.addEventListener("submit", (e) => {
       introPrompt.classList.add("hidden");
       mainHolder.classList.remove("vertical-height");
       imdbMovieIdArray = [];
-      for (let movie of movieData.Search) {
-        imdbMovieIdArray.push(movie.imdbID);
+      if (movieData.Search === undefined) {
+        moviesHolder.innerHTML = "";
+        searchNotFoundHolder.classList.add("search-not-fount-vertical-height");
+        searchNotFoundText.classList.remove("hidden");
+        searchNotFoundText.textContent =
+          "Unable to find what you’re looking for. Please try another search.";
+      } else {
+        searchNotFoundHolder.classList.remove(
+          "search-not-fount-vertical-height"
+        );
+        searchNotFoundHolder.classList.add("hidden");
+        searchNotFoundText.classList.add("hidden");
+        for (let movie of movieData.Search) {
+          imdbMovieIdArray.push(movie.imdbID);
+        }
       }
     })
     .then(() => {

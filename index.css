@@ -47,6 +47,13 @@ button.watchlist-btn {
   font-size: 1.125rem;
   color: var(--very-dark-grey);
 }
+#search-not-found-text {
+  font-size: 1.125rem;
+  color: var(--dark-grey);
+  font-weight: 700;
+  text-align: center;
+  line-height: 20px;
+}
 .search-btn {
   font-weight: 400;
   font-size: 0.875rem;
@@ -90,6 +97,9 @@ input {
 .vertical-height {
   height: calc(100vh - 12.5em);
 }
+.search-not-fount-vertical-height {
+  height: calc(100vh - 14.5em);
+}
 html {
   height: 100%;
 }
@@ -111,6 +121,12 @@ header {
   text-align: center;
   max-width: 550px;
   margin: 0 auto;
+}
+#search-not-found-holder {
+  display: flex;
+  width: 321px;
+  justify-content: center;
+  align-items: center;
 }
 .film-icon {
   width: 70px;
