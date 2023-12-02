@@ -38,7 +38,7 @@ header > h1 {
   font-size: 2.675rem;
   color: var(--white);
 }
-button.watchlist-btn {
+.watchlist-btn {
   color: var(--white);
   font-weight: 700;
   font-size: 0.875rem;
@@ -121,6 +121,7 @@ header {
   text-align: center;
   max-width: 550px;
   margin: 0 auto;
+  padding: 0;
 }
 #search-not-found-holder {
   display: flex;
@@ -213,6 +214,10 @@ img {
   border: none;
   cursor: pointer;
   margin-top: 1em;
+  text-decoration: none;
+}
+.watchlist-btn:hover {
+  color: #ffe209;
 }
 .add-to-watchlist-btn {
   background: none;
@@ -271,6 +276,11 @@ input:focus {
   color: #ffe209;
 }
 @media (min-width: 700px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 2.625em;
+  }
   .time-and-genre-holder {
     flex-direction: row;
     align-items: center;

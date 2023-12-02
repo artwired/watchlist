@@ -11,6 +11,7 @@ formEl.addEventListener("submit", (e) => {
   const introPrompt = document.getElementById("intro-prompt");
   const mainHolder = document.getElementById("main-holder");
   movieDescription = "";
+  let imdbMovieIdArray = [];
   e.preventDefault();
   fetch(
     `http://www.omdbapi.com/?apikey=ef07b548&s=${searchFieldValue}&type=movie`
@@ -20,7 +21,6 @@ formEl.addEventListener("submit", (e) => {
       document.getElementById("search-field").value;
       introPrompt.classList.add("hidden");
       mainHolder.classList.remove("vertical-height");
-      imdbMovieIdArray = [];
       if (movieData.Search === undefined) {
         moviesHolder.innerHTML = "";
         searchNotFoundHolder.classList.add("search-not-fount-vertical-height");
@@ -45,7 +45,19 @@ formEl.addEventListener("submit", (e) => {
         )
           .then((res) => res.json())
           .then((imdbMovieData) => {
-            // console.log(imdbMovieData);
+            console.log(imdbMovieData);
+            document.addEventListener("click", (e) => {
+              if (e.target.dataset.addToWatchlist) {
+                handleWatchlistItem(e.target.dataset.addToWatchlist);
+              }
+            });
+            function handleWatchlistItem(watchlistItemID) {
+              let watchListItem = [];
+              if (imdbMovieData.imdbID === watchlistItemID) {
+                watchListItem.push(imdbMovieData);
+              }
+              console.log(watchListItem);
+            }
             movieDescription += `
             <div class="movie-card-holder">
               <img src="${
@@ -74,7 +86,9 @@ formEl.addEventListener("submit", (e) => {
                     }</p>
                   </div>
                   <div>
-                    <button class="add-to-watchlist-btn">Watchlist</button>
+                    <button class="add-to-watchlist-btn" data-add-to-watchlist=${
+                      imdbMovieData.imdbID
+                    }>Watchlist</button>
                   </div>
                 </div>
                 <div class="plot-holder">
