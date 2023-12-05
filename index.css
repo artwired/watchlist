@@ -94,7 +94,9 @@ input {
   color: #d6ffdf;
 }
 .watchlist-text {
-  color: var(--white);
+  color: var(--dark-grey);
+  font-size: 1.125rem;
+  font-weight: 700;
 }
 /* Layout & Related Styling */
 .vertical-height {
@@ -211,7 +213,10 @@ img {
 .plot-holder {
   margin-top: 0.625em;
 }
-/* Input, buttons, etc.. */
+.watchlist-text {
+  margin-bottom: 0.938em;
+}
+/* Input, buttons, a, etc.. */
 .watchlist-btn {
   background: none;
   border: none;
@@ -278,6 +283,28 @@ input:focus {
 .read-more-btn:hover {
   color: #ffe209;
 }
+
+.find-movies-btn {
+  color: var(--white);
+  text-decoration: none;
+  margin: 0 auto;
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  background: url(./images/add-to-watchlist-icon.svg);
+  background-repeat: no-repeat;
+  width: 200px;
+  padding-left: 25px;
+}
+.find-movies-btn:hover {
+  color: #ffe209;
+  background: url(./images/add-to-watchlist-icon-hvr.svg);
+  background-repeat: no-repeat;
+  padding: 0;
+  width: 200px;
+  padding-left: 25px;
+}
+
 @media (min-width: 700px) {
   header {
     flex-direction: row;
