@@ -93,6 +93,9 @@ input {
   font-size: 0.75rem;
   color: #d6ffdf;
 }
+.watchlist-text {
+  color: var(--white);
+}
 /* Layout & Related Styling */
 .vertical-height {
   height: calc(100vh - 12.5em);

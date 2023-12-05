@@ -1,6 +1,7 @@
 const formEl = document.getElementById("form-el");
 const moviesHolder = document.getElementById("movies-holder");
 let movieDescription = "";
+let watchlistArray = [];
 
 formEl.addEventListener("submit", (e) => {
   const searchFieldValue = document.getElementById("search-field").value;
@@ -45,18 +46,25 @@ formEl.addEventListener("submit", (e) => {
         )
           .then((res) => res.json())
           .then((imdbMovieData) => {
-            console.log(imdbMovieData);
+            // console.log(imdbMovieData);
             document.addEventListener("click", (e) => {
               if (e.target.dataset.addToWatchlist) {
-                handleWatchlistItem(e.target.dataset.addToWatchlist);
+                handleWatchlistItem(
+                  e.target.dataset.addToWatchlist,
+                  imdbMovieData
+                );
               }
             });
-            function handleWatchlistItem(watchlistItemID) {
-              let watchListItem = [];
+            function handleWatchlistItem(watchlistItemID, imdbMovieData) {
               if (imdbMovieData.imdbID === watchlistItemID) {
-                watchListItem.push(imdbMovieData);
+                let watchlistMovie = imdbMovieData;
+                watchlistArray.push(watchlistMovie);
+                // console.log(watchlistArray);
+                localStorage.setItem(
+                  "imdbMovie",
+                  JSON.stringify(watchlistArray)
+                );
               }
-              console.log(watchListItem);
             }
             movieDescription += `
             <div class="movie-card-holder">
