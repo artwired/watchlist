@@ -1,7 +1,9 @@
 const formEl = document.getElementById("form-el");
 const moviesHolder = document.getElementById("movies-holder");
+// localStorage.clear();
 let movieDescription = "";
-let watchlistArray = [];
+
+let watchlistArray = JSON.parse(localStorage.getItem("imdbMovie")) || [];
 
 formEl.addEventListener("submit", (e) => {
   const searchFieldValue = document.getElementById("search-field").value;
