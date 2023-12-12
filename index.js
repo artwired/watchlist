@@ -1,7 +1,10 @@
 const formEl = document.getElementById("form-el");
 const moviesHolder = document.getElementById("movies-holder");
+const watchlistCheckBtn = document.getElementById("watchlist-check-btn");
+const searchField = document.getElementById("search-field");
 // localStorage.clear();
 let movieDescription = "";
+let addIconDiv = "";
 
 let watchlistArray = JSON.parse(localStorage.getItem("imdbMovie")) || [];
 
@@ -57,17 +60,6 @@ formEl.addEventListener("submit", (e) => {
                 );
               }
             });
-            function handleWatchlistItem(watchlistItemID, imdbMovieData) {
-              if (imdbMovieData.imdbID === watchlistItemID) {
-                let watchlistMovie = imdbMovieData;
-                watchlistArray.push(watchlistMovie);
-                // console.log(watchlistArray);
-                localStorage.setItem(
-                  "imdbMovie",
-                  JSON.stringify(watchlistArray)
-                );
-              }
-            }
             movieDescription += `
             <div class="movie-card-holder">
               <img src="${
@@ -95,10 +87,13 @@ formEl.addEventListener("submit", (e) => {
                       imdbMovieData.Genre === "N/A" ? "" : imdbMovieData.Genre
                     }</p>
                   </div>
-                  <div>
+                  <div class="add-to-watchlist-btn-holder">
                     <button class="add-to-watchlist-btn" data-add-to-watchlist=${
                       imdbMovieData.imdbID
                     }>Watchlist</button>
+                    <div class="added-icon hidden">
+                      Added
+                    </div>
                   </div>
                 </div>
                 <div class="plot-holder">
@@ -111,11 +106,53 @@ formEl.addEventListener("submit", (e) => {
               </div>
             </div>
             `;
+            function handleWatchlistItem(watchlistItemID, imdbMovieData) {
+              const addToWatchlistBtns = document.querySelectorAll(
+                ".add-to-watchlist-btn"
+              );
+              for (let addToWatchlistBtn of addToWatchlistBtns) {
+                const watchlistBtn = addToWatchlistBtn.dataset.addToWatchlist;
+
+                if (watchlistBtn === watchlistItemID) {
+                  addToWatchlistBtn.classList.add("hidden");
+                  addToWatchlistBtn.nextElementSibling.classList.remove(
+                    "hidden"
+                  );
+                }
+              }
+              if (imdbMovieData.imdbID === watchlistItemID) {
+                let watchlistMovie = imdbMovieData;
+                watchlistArray.push(watchlistMovie);
+                // console.log(watchlistArray);
+                localStorage.setItem(
+                  "imdbMovie",
+                  JSON.stringify(watchlistArray)
+                );
+              }
+            }
             moviesHolder.innerHTML = movieDescription;
+            const addToWatchlistBtns = document.querySelectorAll(
+              ".add-to-watchlist-btn"
+            );
+            for (let watchlistArrayItem of watchlistArray) {
+              let watchlistObjsIDs = watchlistArrayItem.imdbID;
+              for (let eachAddToWatchlistBtn of addToWatchlistBtns) {
+                let addToWatchlistBtnElIDs =
+                  eachAddToWatchlistBtn.dataset.addToWatchlist;
+                if (addToWatchlistBtnElIDs === watchlistObjsIDs) {
+                  eachAddToWatchlistBtn.classList.add("hidden");
+                  eachAddToWatchlistBtn.nextElementSibling.classList.remove(
+                    "hidden"
+                  );
+                } else {
+                  console.log("no match found");
+                }
+              }
+            }
           });
       }
     });
-  formEl.reset();
+  searchField.value = "";
 });
 
 function handlePlot(fullString) {
