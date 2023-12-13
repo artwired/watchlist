@@ -257,6 +257,23 @@ img {
   color: #ffe209;
   background-image: url(./images/add-to-watchlist-icon-hvr.svg);
 }
+.remove-from-watchlist-btn {
+  background: none;
+  border: none;
+  color: var(--white);
+  background-image: url(./images/remove-icon.svg);
+  background-repeat: no-repeat;
+  background-position: left 0 top 1px;
+  background-size: 16px;
+  padding-left: 1.75em;
+  font-size: 0.75rem;
+  cursor: pointer;
+  margin-top: 1em;
+}
+.remove-from-watchlist-btn:hover {
+  color: #ffe209;
+  background-image: url(./images/remove-icon-hvr.svg);
+}
 .search-form {
   position: absolute;
   bottom: -1.125em;
@@ -285,6 +302,9 @@ img {
 }
 input:focus {
   outline: none;
+}
+input:focus::placeholder {
+  color: transparent;
 }
 .read-more-btn {
   font-size: 0.75rem;

@@ -1,8 +1,6 @@
 const formEl = document.getElementById("form-el");
 const moviesHolder = document.getElementById("movies-holder");
 const watchlistCheckBtn = document.getElementById("watchlist-check-btn");
-const searchField = document.getElementById("search-field");
-// localStorage.clear();
 let movieDescription = "";
 let addIconDiv = "";
 
@@ -152,7 +150,7 @@ formEl.addEventListener("submit", (e) => {
           });
       }
     });
-  searchField.value = "";
+  formEl.reset();
 });
 
 function handlePlot(fullString) {
