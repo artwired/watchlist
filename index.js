@@ -9,7 +9,7 @@ let addIconDiv = "";
 let watchlistArray = JSON.parse(localStorage.getItem("imdbMovie")) || [];
 
 formEl.addEventListener("submit", (e) => {
-  const searchFieldValue = document.getElementById("search-field").value;
+  const searchFieldValue = document.getElementById("search-field").value.trim();
   const searchNotFoundHolder = document.getElementById(
     "search-not-found-holder"
   );
