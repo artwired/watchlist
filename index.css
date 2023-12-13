@@ -62,7 +62,7 @@ header > h1 {
 }
 input {
   font-family: "Inter", sans-serif;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--light-mid-grey);
   letter-spacing: 0.0156em;
@@ -366,5 +366,8 @@ input:focus::placeholder {
   }
   .added-icon {
     margin-top: 0;
+  }
+  input {
+    font-size: 0.875rem;
   }
 }
