@@ -1,3 +1,5 @@
+import { baseURL, key } from "./settings/config.js";
+
 const formEl = document.getElementById("form-el");
 const moviesHolder = document.getElementById("movies-holder");
 const watchlistCheckBtn = document.getElementById("watchlist-check-btn");
@@ -17,9 +19,7 @@ formEl.addEventListener("submit", (e) => {
   movieDescription = "";
   let imdbMovieIdArray = [];
   e.preventDefault();
-  fetch(
-    `http://www.omdbapi.com/?apikey=ef07b548&s=${searchFieldValue}&type=movie`
-  )
+  fetch(`${baseURL}?apikey=${key}&s=${searchFieldValue}&type=movie`)
     .then((res) => res.json())
     .then((movieData) => {
       document.getElementById("search-field").value;
@@ -44,9 +44,7 @@ formEl.addEventListener("submit", (e) => {
     })
     .then(() => {
       for (let imdbMovieId of imdbMovieIdArray) {
-        fetch(
-          `http://www.omdbapi.com/?apikey=ef07b548&i=${imdbMovieId}&type=movie&plot=full`
-        )
+        fetch(`${baseURL}?apikey=${key}&i=${imdbMovieId}&type=movie&plot=full`)
           .then((res) => res.json())
           .then((imdbMovieData) => {
             // console.log(imdbMovieData);

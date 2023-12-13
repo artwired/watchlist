@@ -3,7 +3,6 @@ const watchlistHolder = document.getElementById("watchlist-holder");
 const mainHolder = document.getElementById("main-holder");
 
 let movieItems = JSON.parse(localStorage.getItem("imdbMovie"));
-console.log(movieItems);
 
 document.addEventListener("click", (e) => {
   if (e.target.dataset.removeFromWatchlist) {
