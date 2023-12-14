@@ -248,8 +248,8 @@ img {
   color: var(--white);
   background-image: url(./images/add-to-watchlist-icon.svg);
   background-repeat: no-repeat;
-  background-position: left 0 top 1px;
-  background-size: 16px;
+  background-position: left 0 top 0;
+  background-size: contain;
   padding-left: 1.75em;
   font-size: 0.75rem;
   cursor: pointer;
@@ -258,15 +258,16 @@ img {
 .add-to-watchlist-btn:hover {
   color: #ffe209;
   background-image: url(./images/add-to-watchlist-icon-hvr.svg);
+  background-size: contain;
 }
 .remove-from-watchlist-btn {
   background: none;
   border: none;
   color: var(--white);
   background-image: url(./images/remove-icon.svg);
+  background-size: contain;
   background-repeat: no-repeat;
-  background-position: left 0 top 1px;
-  background-size: 16px;
+  background-position: left 0 top 0;
   padding-left: 1.75em;
   font-size: 0.75rem;
   cursor: pointer;
@@ -275,6 +276,7 @@ img {
 .remove-from-watchlist-btn:hover {
   color: #ffe209;
   background-image: url(./images/remove-icon-hvr.svg);
+  background-size: contain;
 }
 .search-form {
   position: absolute;
@@ -328,6 +330,7 @@ input:focus::placeholder {
   font-weight: 700;
   background: url(./images/add-to-watchlist-icon.svg);
   background-repeat: no-repeat;
+  background-size: contain;
   width: 200px;
   padding-left: 25px;
 }
@@ -335,6 +338,7 @@ input:focus::placeholder {
   color: #ffe209;
   background: url(./images/add-to-watchlist-icon-hvr.svg);
   background-repeat: no-repeat;
+  background-size: contain;
   padding: 0;
   width: 200px;
   padding-left: 25px;
