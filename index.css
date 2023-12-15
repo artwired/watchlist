@@ -173,6 +173,9 @@ main {
   border-bottom: 1px solid #2c2c2c;
   width: 100%;
 }
+.movie-card-holder:last-child {
+  border-bottom: none;
+}
 img {
   padding-top: 1.625em;
   display: block;
