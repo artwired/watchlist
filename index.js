@@ -74,11 +74,11 @@ formEl.addEventListener("submit", (e) => {
                 </div>
                 <div class="time-and-genre-holder">
                   <div class="time-and-genre-container">
-                    <p class="movie-time">${
-                      imdbMovieData.Runtime === "N/A"
-                        ? ""
-                        : imdbMovieData.Runtime
-                    }</p>
+                    <p class="movie-time" data-duration=${
+                      imdbMovieData.imdbID
+                    }>${
+              imdbMovieData.Runtime === "N/A" ? "" : imdbMovieData.Runtime
+            }</p>
                     <p class="movie-genre">${
                       imdbMovieData.Genre === "N/A" ? "" : imdbMovieData.Genre
                     }</p>
@@ -127,6 +127,7 @@ formEl.addEventListener("submit", (e) => {
               }
             }
             moviesHolder.innerHTML = movieDescription;
+
             const addToWatchlistBtns = document.querySelectorAll(
               ".add-to-watchlist-btn"
             );
@@ -140,9 +141,14 @@ formEl.addEventListener("submit", (e) => {
                   eachAddToWatchlistBtn.nextElementSibling.classList.remove(
                     "hidden"
                   );
-                } else {
-                  console.log("no match found");
                 }
+              }
+            }
+
+            const movieTimeHolders = document.querySelectorAll(".movie-time");
+            for (let movieTimeHolder of movieTimeHolders) {
+              if (movieTimeHolder.textContent === "") {
+                movieTimeHolder.classList.remove("movie-time");
               }
             }
           });
